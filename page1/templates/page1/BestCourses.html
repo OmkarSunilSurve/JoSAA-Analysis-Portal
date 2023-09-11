@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.rectangle {
+    display: inline-block;
+    border: 1px solid #ff0000;
+    margin-bottom: 10px;
+    margin-right: 50px;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    font-size: 30px;
+    text-align: center;
+    width: 200px;
+}
+
+.padding-example {
+    padding-left: 170px;
+    padding-right: 100px;
+}
+
+.dropdown {
+    height: 25px;
+    width: 190px;
+    font-size: 20px;
+}
+
+.result-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+}
+
+.result-table th,
+.result-table td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.result-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  border-right: 1px solid #ddd;
+}
+
+.result-table th:last-child {
+  border-right: none;
+}
+
+.result-table tr:last-child td {
+  border-bottom: none;
+}
+
+
+</style>
+<title>JoSAA</title>
+<script>
+
+function showProgramnameDropdown(programtypeDropdown) {
+    const year = programtypeDropdown.value;
+    
+    var programnameDropdown = document.getElementById("programname");
+
+        programnameDropdown.innerHTML = "";
+        var option = document.createElement("option");
+        option.value = "";
+        option.text = "Select Program";
+        option.style.fontSize = '20px';
+        programnameDropdown.appendChild(option);
+        
+      const xhr = new XMLHttpRequest();
+      const url = `/get-yearwise/?year=${year}`;
+      xhr.open('GET', url, true);
+      xhr.onreadystatechange = function() {
+          if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+              const responseData = JSON.parse(xhr.responseText);
+              
+              for (var i = 0; i < responseData.length; i++) {
+                var option = document.createElement("option");
+                option.value = responseData[i]['Program_name'];
+                option.text = responseData[i]['Program_name'];
+                option.style.fontSize = '20px';
+                programnameDropdown.appendChild(option);
+              }
+              
+              
+          }
+      };
+      xhr.send();
+  }
+
+
+
+</script>
+</head>
+<body style="background-color: lightgrey;">
+<h1 style="color: blue; background-color: lightblue;">Welcome</h1>
+<hr/>
+<p><h2>Let's Explore best institute for every course for a given year!!!</h2></p>
+
+<div class="padding-example">
+    
+    <div class="rectangle" id="yearDropdown">
+    <label for="year">Year</label>
+    <br>
+    <select id="year" name="Year" class="dropdown" onchange="showProgramnameDropdown(this)">
+        <option value="">Select a year</option>
+        <option value="2016">2016</option>
+        <option value="2017">2017</option>
+        <option value="2018">2018</option>
+        <option value="2019">2019</option>
+        <option value="2020">2020</option>
+        <option value="2021">2021</option>
+        <option value="2022">2022</option>
+    </select>
+    </div>
+    
+    <div class="rectangle" id="programnameDropdown">
+        <label for="programname">Program Name</label>
+        <br>
+        
+        <select id="programname" name="Programname" class="dropdown" >
+            <option value="">Select a program</option>
+        </select>
+
+    </div>
+    
+
+    
+    <div id="resultContainer"></div>
+      <script>
+        
+        const year = document.getElementById('year');
+        const Prog_name = document.getElementById('programname');
+        
+        Prog_name.addEventListener('change', function() {
+            
+            const year_val = year.value;
+            const Prog_val = Prog_name.value;
+            
+            update( year_val,Prog_val);
+          });
+          
+        function update(year,programname) {
+            const xhr = new XMLHttpRequest();
+            const url = `/get-bestcourse/?year=${year}&programname=${programname}`;
+            xhr.open('GET', url, true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                    const responseData = JSON.parse(xhr.responseText);
+                    renderdata(responseData);
+                }
+            };
+            xhr.send();
+        }
+        function renderdata(data) {
+             
+              var resultContainer = document.getElementById("resultContainer");
+              resultContainer.innerHTML = "";
+            
+              // Create table element
+              var table = document.createElement("table");
+              table.classList.add("result-table");
+            
+              // Create table header
+              var thead = document.createElement("thead");
+              var headerRow = document.createElement("tr");
+              var headerCells = ["Institute", "Program Name", "Opening Rank", "Closing Rank"];
+              headerCells.forEach(cellText => {
+                var headerCell = document.createElement("th");
+                headerCell.textContent = cellText;
+                headerRow.appendChild(headerCell);
+              });
+              thead.appendChild(headerRow);
+              table.appendChild(thead);
+            
+              // Create table body
+              var tbody = document.createElement("tbody");
+              data.forEach(item => {
+                var row = document.createElement("tr");
+                var cells = [item.Institute, item.Program_name, item.Opening_rank, item.Closing_rank];
+                cells.forEach(cellText => {
+                  var cell = document.createElement("td");
+                  cell.textContent = cellText;
+                  row.appendChild(cell);
+                });
+                tbody.appendChild(row);
+              });
+              table.appendChild(tbody);
+            
+              resultContainer.appendChild(table);
+            }
+
+          
+          
+      </script>
+    
+    
+    <div>
+      <canvas id="myChart" width="300" height="500"></canvas>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js" integrity="sha512-M7nHCiNUOwFt6Us3r8alutZLm9qMt4s9951uo8jqO4UwJ1hziseL6O3ndFyigx6+LREfZqnhHxYjKRJ8ZQ69DQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
+    
+
+</div>
+
+</body>
+</html>
+
+

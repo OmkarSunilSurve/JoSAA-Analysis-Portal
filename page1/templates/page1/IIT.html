@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<style>
+	
+	.rectangle {
+  	display: inline-block;
+  	border: 1px solid #ff0000;
+  	margin-bottom: 10px;
+	margin-right: 10px;
+	border-radius: 10px;
+  	padding: 10px;
+	background-color: #f0f0f0;
+	font-size: 16px;
+	}
+	.rectangle-content {
+ 	 margin-top: 10px; /* Spacing between content and border */
+	}
+	.rectangle-link {
+  	text-decoration: none; /* Remove underline from links */
+	}
+	</style>
+		<title>JoSAA</title>
+	</head>
+	<body style="background-color:lightgrey;">
+		<h1 style="color:blue;background-color:lightblue;">Welcome</h1>
+		<hr/>
+		<p><h2>Here we analyze the Cutoff and ORCR for JoSAA Counseling</h2></p>
+		<div id="rectangle-container"></div>
+		<script>
+		var rectangleList = [
+  			'Indian Institute of Technology Bhubaneswar',
+  			'Indian Institute of Technology Bombay',
+  			'Indian Institute of Technology Mandi',
+  			'Indian Institute of Technology Delhi',
+  			'Indian Institute of Technology Indore',
+  			'Indian Institute of Technology Kharagpur',
+  			'Indian Institute of Technology Hyderabad',
+  			'Indian Institute of Technology Jodhpur',
+  			'Indian Institute of Technology Kanpur',
+  			'Indian Institute of Technology Madras',
+  			'Indian Institute of Technology Gandhinagar',
+  			'Indian Institute of Technology Patna',
+  			'Indian Institute of Technology Roorkee',
+  			'Indian School of Mines Dhanbad',
+  			'Indian Institute of Technology Ropar',
+  			'Indian Institute of Technology (BHU) Varanasi',
+  			'Indian Institute of Technology Guwahati',
+  			'Indian Institute of Technology Bhilai',
+  			'Indian Institute of Technology Goa',
+  			'Indian Institute of Technology Palakkad',
+  			'Indian Institute of Technology Tirupati',
+  			'Indian Institute of Technology Jammu',
+  			'Indian Institute of Technology Dharwad'
+		];
+		var container = document.getElementById("rectangle-container");
+		for (var i = 0; i < rectangleList.length; i++) {
+  			// Create a new div element for each rectangle
+  			var rectangle = document.createElement("div");
+  			rectangle.className = "rectangle";
+
+			var contentDiv = document.createElement("div");
+  			contentDiv.className = "rectangle-content";
+
+  			var link = document.createElement("a");
+  			link.className = "rectangle-link";
+  			link.href = "#" + rectangleList[i].replace(/\s/g, "-");
+  			link.textContent = rectangleList[i];
+
+  			// Append the link to the content div
+  			contentDiv.appendChild(link);
+			
+			// Append the content div to the rectangle
+  			rectangle.appendChild(contentDiv);
+
+			// Append the rectangle to the container
+  			container.appendChild(rectangle);
+
+		}
+		</script>
+	</body>
+</html>

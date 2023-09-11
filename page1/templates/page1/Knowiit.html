@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.rectangle {
+    display: inline-block;
+    border: 1px solid #ff0000;
+    margin-bottom: 10px;
+    margin-right: 50px;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    font-size: 30px;
+    text-align: center;
+    width: 200px;
+}
+
+.padding-example {
+    padding-left: 170px;
+    padding-right: 100px;
+}
+
+.dropdown {
+    height: 25px;
+    width: 190px;
+    font-size: 20px;
+}
+
+.result-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+}
+
+.result-table th,
+.result-table td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.result-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  border-right: 1px solid #ddd;
+}
+
+.result-table th:last-child {
+  border-right: none;
+}
+
+.result-table tr:last-child td {
+  border-bottom: none;
+}
+
+
+</style>
+<title>JoSAA</title>
+<script>
+
+function showProgramnameDropdown(programtypeDropdown) {
+    
+    var programnameDropdown = document.getElementById("programnameDropdown");
+
+    if (programtypeDropdown.value !== "") {
+        programnameDropdown.style.display = "inline-block";
+    } else {
+        programnameDropdown.style.display = "none";
+    }
+}
+
+
+</script>
+</head>
+<body style="background-color: lightgrey;">
+<h1 style="color: blue; background-color: lightblue;">Welcome</h1>
+<hr/>
+<p><h2>Want to know your IIT based on last year ???  Enter your Rank to find out!!! </h2></p>
+
+<div class="padding-example">
+    
+    <div class="rectangle" id="Rank" onchange="showProgramnameDropdown(this)">
+        <label for="rank">Rank</label>
+        <input type="text" id="rank" name="rank" class="dropdown" >
+        <br>
+    </div>
+    
+    <div class="rectangle" id="programnameDropdown" style="display: none;">
+        <label for="programname">Program Name</label>
+        <br>
+        <select id="programname" name="Programname" class="dropdown">
+          <option value="">Select a program</option>
+          <option value="CivilEngineering">Civil Engineering</option>
+          <option value="CivilEngineeringandM.Tech.inStructuralEngineering">Civil Engineering and M. Tech. in Structural Engineering</option>
+          <option value="CivilEngineeringandM.TechinTransportationEngineering">Civil Engineering and M.Tech in Transportation Engineering</option>
+          <option value="ComputerScienceandEngineering">Computer Science and Engineering</option>
+          <option value="ElectricalEngineering">Electrical Engineering</option>
+          <option value="ElectronicsandCommunicationEngineering">Electronics and Communication Engineering</option>
+          <option value="MechanicalEngineering">Mechanical Engineering</option>
+          <option value="MechanicalEngineeringandM.Tech.inMechanicalSystemDesign">Mechanical Engineering and M. Tech. in Mechanical System Design</option>
+          <option value="MechanicalEngineeringandM.Tech.inThermalScience&Engineering">Mechanical Engineering and M. Tech. in Thermal Science & Engineering</option>
+          <option value="MetallurgicalandMaterialsEngineering">Metallurgical and Materials Engineering</option>
+          <option value="AerospaceEngineering">Aerospace Engineering</option>
+          <option value="ChemicalEngineering">Chemical Engineering</option>
+          <option value="Chemistry">Chemistry</option>
+          <option value="ElectricalEngineeringwithM.Tech.inCommunicationsandSignalProcessing">Electrical Engineering with M.Tech. in Communications and Signal Processing</option>
+          <option value="ElectricalEngineeringwithM.Tech.inMicroelectronics">Electrical Engineering with M.Tech. in Microelectronics</option>
+          <option value="EnergyEngineeringwithM.Tech.inEnergySystemsEngineering">Energy Engineering with M.Tech. in Energy Systems Engineering</option>
+          <option value="EngineeringPhysics">Engineering Physics</option>
+          <option value="EngineeringPhysicsandM.Tech.withspecializationinNanoScience">Engineering Physics and M.Tech. with specialization in Nano Science</option>
+          <option value="MechanicalEngineeringandM.Tech.inComputerIntegratedManufacturing">Mechanical Engineering and M.Tech. in Computer Integrated Manufacturing</option>
+          <option value="MetallurgicalEngineeringandMaterialsScience">Metallurgical Engineering and Materials Science</option>
+          <option value="MetallurgicalEngineeringandMaterialsSciencewithM.Tech.inCeramicsandComposites">Metallurgical Engineering and Materials Science with M.Tech. in Ceramics and Composites</option>
+          <option value="MetallurgicalEngineeringandMaterialsSciencewithM.Tech.inMetallurgicalProcessEngineering">Metallurgical Engineering and Materials Science with M.Tech. in Metallurgical Process Engineering</option>
+          <option value="BiochemicalEngineeringandBiotechnology">Biochemical Engineering and Biotechnology</option>
+          <option value="BiotechnologyandBiochemicalEngineering">Biotechnology and Biochemical Engineering</option>
+          <option value="MathematicsandComputing">Mathematics and Computing</option>
+          <option value="ProductionandIndustrialEngineering">Production and Industrial Engineering</option>
+          <option value="TextileTechnology">Textile Technology</option>
+          <option value="AgriculturalandFoodEngineering">Agricultural and Food Engineering</option>
+          <option value="AgriculturalandFoodEngineeringwithM.Tech.inanyofthelistedspecializations">Agricultural and Food Engineering with M.Tech. in any of the listed specializations</option>
+          <option value="AppliedGeology">Applied Geology</option>
+          <option value="Architecture">Architecture</option>
+          <option value="CivilEngineeringwithanyofthelistedspecialization">Civil Engineering with any of the listed specialization</option>
+          <option value="Economics">Economics</option>
+          <option value="ElectricalEngineeringwithM.Tech.inanyofthelistedspecializations">Electrical Engineering with M.Tech. in any of the listed specializations</option>
+          <option value="ElectronicsandElectricalCommunicationEngineering">Electronics and Electrical Communication Engineering</option>
+          <option value="ElectronicsandElectricalCommunicationEngineeringwithM.Tech.inanyofthelistedspecializations">Electronics and Electrical Communication Engineering with M.Tech. in any of the listed specializations</option>
+          <option value="ExplorationGeophysics">Exploration Geophysics</option>
+          <option value="IndustrialandSystemsEngineering">Industrial and Systems Engineering</option>
+          <option value="IndustrialandSystemsEngineeringwithM.Tech.inIndustrialandSystemsEngineeringandManagement">Industrial and Systems Engineering with M.Tech. in Industrial and Systems Engineering and Management</option>
+          <option value="InstrumentationEngineering">Instrumentation Engineering</option>
+          <option value="ManufacturingScienceandEngineering">Manufacturing Science and Engineering</option>
+          <option value="ManufacturingScienceandEngineeringwithM.Tech.inIndustrialandSystemsEngineeringandManagement">Manufacturing Science and Engineering with M.Tech. in Industrial and Systems Engineering and Management</option>
+          <option value="MechanicalEngineeringwithM.Tech.inanyofthelistedspecializations">Mechanical Engineering with M.Tech. in any of the listed specializations</option>
+          <option value="MiningEngineering">Mining Engineering</option>
+          <option value="MiningSafetyEngineering">Mining Safety Engineering</option>
+          <option value="OceanEngineeringandNavalArchitecture">Ocean Engineering and Naval Architecture</option>
+          <option value="Physics">Physics</option>
+          <option value="QualityEngineeringDesignandManufacturing">Quality Engineering Design and Manufacturing</option>
+          <option value="EngineeringScience">Engineering Science</option>
+          <option value="MaterialsScienceandMetallurgicalEngineering">Materials Science and Metallurgical Engineering</option>
+          <option value="BiologicalSciencesandBioengineering">Biological Sciences and Bioengineering</option>
+          <option value="EarthSciences">Earth Sciences</option>
+          <option value="MaterialsScienceandEngineering">Materials Science and Engineering</option>
+          <option value="MathematicsandScientificComputing">Mathematics and Scientific Computing</option>
+          <option value="BiologicalEngineering">Biological Engineering</option>
+          <option value="BiologicalSciences">Biological Sciences</option>
+          <option value="EngineeringDesign">Engineering Design</option>
+          <option value="NavalArchitectureandOceanEngineering">Naval Architecture and Ocean Engineering</option>
+          <option value="AppliedMathematics">Applied Mathematics</option>
+          <option value="BioTechnology">Bio Technology</option>
+          <option value="GeologicalTechnology">Geological Technology</option>
+          <option value="GeophysicalTechnology">Geophysical Technology</option>
+          <option value="PolymerScienceandEngineering">Polymer Science and Engineering</option>
+          <option value="AppliedGeophysics">Applied Geophysics</option>
+          <option value="ElectronicsandInstrumentationEngineering">Electronics and Instrumentation Engineering</option>
+          <option value="EnvironmentalEngineering">Environmental Engineering</option>
+          <option value="MineralEngineering">Mineral Engineering</option>
+          <option value="MiningMachineryEngineering">Mining Machinery Engineering</option>
+          <option value="PetroleumEngineering">Petroleum Engineering</option>
+          <option value="BiochemicalEngineeringwithM.Tech.inBiochemicalEngineeringandBiotechnology">Biochemical Engineering with M.Tech. in Biochemical Engineering and Biotechnology</option>
+          <option value="BioengineeringwithM.TechinBiomedicalTechnology">Bioengineering with M.Tech in Biomedical Technology</option>
+          <option value="CeramicEngineering">Ceramic Engineering</option>
+          <option value="CivilEngineeringwithM.Tech.inStructuralEngineering">Civil Engineering with M.Tech. in Structural Engineering</option>
+          <option value="ElectricalEngineeringwithM.Tech.inPowerElectronics">Electrical Engineering with M.Tech. in Power Electronics</option>
+          <option value="ElectronicsEngineering">Electronics Engineering</option>
+          <option value="IndustrialChemistry">Industrial Chemistry</option>
+          <option value="MaterialsScienceandTechnology">Materials Science and Technology</option>
+          <option value="MetallurgicalEngineering">Metallurgical Engineering</option>
+          <option value="Pharmaceutics">Pharmaceutics</option>
+          <option value="ChemicalScienceandTechnology">Chemical Science and Technology</option>
+          <option value="ElectronicsandElectricalEngineering">Electronics and Electrical Engineering</option>
+          <option value="CivilEngineeringandM.Tech.inEnvironmentalEngineering">Civil Engineering and M.Tech. in Environmental Engineering</option>
+          <option value="ElectricalEngineeringandM.TechPowerElectronicsandDrives">Electrical Engineering and M.Tech Power Electronics and Drives</option>
+          <option value="MechanicalEngineeringwithM.Tech.inManufacturingEngineering">Mechanical Engineering with M.Tech. in Manufacturing Engineering</option>
+          <option value="MetallurgicalandMaterialsEngineeringandM.Tech.inMaterialsScienceandEngineering">Metallurgical and Materials Engineering and M.Tech. in Materials Science and Engineering</option>
+          <option value="PharmaceuticalEngineering&Tech">Pharmaceutical Engineering & Technology</option>
+          <option value="BSinMathematics">BS in Mathematics</option>
+          <option value="EnvironmentalScienceandEngineering">Environmental Science and Engineering</option>
+          <option value="MetallurgicalEngineering&MaterialsScience">Metallurgical Engineering & Materials Science</option>
+          <option value="BioEngineering">Bio Engineering</option>
+          <option value="DataScienceandEngineering">Data Science and Engineering</option>
+          <option value="ArtificialIntelligence">Artificial Intelligence</option>
+          <option value="ElectricalandElectronicsEngineering">Electrical and Electronics Engineering</option>
+          <option value="EngineeringandComputationalMechanics">Engineering and Computational Mechanics</option>
+          <option value="MaterialsEngineering">Materials Engineering</option>
+          <option value="BiomedicalEngineering">Biomedical Engineering</option>
+          <option value="ArtificialIntelligenceandDataScience">Artificial Intelligence and Data Science</option>
+          <option value="CivilandInfrastructureEngineering">Civil and Infrastructure Engineering</option>
+          <option value="MineralandMetallurgicalEngineering">Mineral and Metallurgical Engineering</option>
+          <option value="BiosciencesandBioengineering">Biosciences and Bioengineering</option>
+          <option value="DataScienceandArtificialIntelligence">Data Science and Artificial Intelligence</option>
+          <option value="EnergyEngineering">Energy Engineering</option>
+          <option value="BiotechnologyandBioinformatics">Biotechnology and Bioinformatics</option>
+          <option value="ComputationalEngineering">Computational Engineering</option>
+          <option value="StatisticsandDataScience">Statistics and Data Science</option>
+          <option value="ChemicalSciences">Chemical Sciences</option>
+          <option value="ChemistrywithSpecialization">Chemistry with Specialization</option>
+          <option value="PhysicswithSpecialization">Physics with Specialization</option>
+          <option value="MechatronicsEngineering">Mechatronics Engineering</option>
+          <option value="ChemicalandBiochemicalEngineering">Chemical and Biochemical Engineering</option>
+          <option value="InterdisciplinarySciences">Interdisciplinary Sciences</option>
+        </select>
+
+    </div>
+    
+
+    
+    <div id="resultContainer"></div>
+      <script>
+        
+        const rank = document.getElementById('rank');
+        const Prog_name = document.getElementById('programname');
+        
+        Prog_name.addEventListener('change', function() {
+            
+            const rank_val = rank.value;
+            const Prog_val = Prog_name.value;
+            
+            update( rank_val,Prog_val);
+          });
+          
+        function update(rank,programname) {
+            const xhr = new XMLHttpRequest();
+            const url = `/get-knowiit/?rank=${rank}&programname=${programname}`;
+            xhr.open('GET', url, true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                    const responseData = JSON.parse(xhr.responseText);
+                    renderdata(responseData);
+                }
+            };
+            xhr.send();
+        }
+        function renderdata(data) {
+              
+              var resultContainer = document.getElementById("resultContainer");
+              resultContainer.innerHTML = "";
+            
+              // Create table element
+              var table = document.createElement("table");
+              table.classList.add("result-table");
+            
+              // Create table header
+              var thead = document.createElement("thead");
+              var headerRow = document.createElement("tr");
+              var headerCells = ["Institute", "Program Name", "Opening Rank", "Closing Rank"];
+              headerCells.forEach(cellText => {
+                var headerCell = document.createElement("th");
+                headerCell.textContent = cellText;
+                headerRow.appendChild(headerCell);
+              });
+              thead.appendChild(headerRow);
+              table.appendChild(thead);
+            
+              // Create table body
+              var tbody = document.createElement("tbody");
+              data.forEach(item => {
+                var row = document.createElement("tr");
+                var cells = [item.Institute, item.Program_name, item.Opening_rank, item.Closing_rank];
+                cells.forEach(cellText => {
+                  var cell = document.createElement("td");
+                  cell.textContent = cellText;
+                  row.appendChild(cell);
+                });
+                tbody.appendChild(row);
+              });
+              table.appendChild(tbody);
+            
+              resultContainer.appendChild(table);
+            }
+
+          
+          
+      </script>
+    
+    
+    <div>
+      <canvas id="myChart" width="300" height="500"></canvas>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js" integrity="sha512-M7nHCiNUOwFt6Us3r8alutZLm9qMt4s9951uo8jqO4UwJ1hziseL6O3ndFyigx6+LREfZqnhHxYjKRJ8ZQ69DQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
+    
+
+</div>
+
+</body>
+</html>
+
+
