@@ -1,6 +1,6 @@
 # Website Link
 
-http://josaaproject.pythonanywhere.com
+OmkarSurve.pythonanywhere.com
 
 # JOSAA Seat Allotment Portal
 
